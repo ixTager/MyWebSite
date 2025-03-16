@@ -1,26 +1,42 @@
 import CmdText from '../entities/Console';
 import '../shared/styles/Console.scss';
+import { AnimatePresence, motion } from 'motion/react';
+import UIConsole from '../shared/UI/Console';
 
-export default function Console() {
+interface Console{
+    reduced: boolean;
+    reduceFunc: () => void;
+}
+
+const Console: React.FC<Console> = ({reduced, reduceFunc }) => { 
     return (
-        <div className='console'>
-            <div className="cmd">
-                <div className='cmd-top'>
-                    <p>client@linux-web: /tmp/portfolio</p>
-
-                    <div className='cmd-nav'>
-                        <p>File</p>
-                        <p>Edit</p>
-                        <p>View</p>
-                        <p>Search</p>
-                        <p>Terminal</p>
-                        <p>Help</p>
-                    </div>
-                </div>
+        <AnimatePresence>
+            {reduced ? 
+            (
+            <motion.div
+                animate={{ maxWidth:"45vw", marginLeft: "auto", height:'25vh', 
+                    paddingRight: "2.188rem" , overflow:"hidden",borderRadius:"30px",
+                    }}
+                transition={{ duration: 0.7 }}
+                className='cmd'
+            >
+                <UIConsole reduceFunc={reduceFunc} />
+                <div
+                className='cmd-btm'
+                >
+                    <CmdText />
+                </div>  
+            </motion.div>) 
+            :
+            (
+            <motion.div transition={{ duration: 0.7 }} initial={{ height: '100%' }} className='cmd'>
+                <UIConsole reduceFunc={reduceFunc} />
                 <div className='cmd-btm'>
                     <CmdText />
                 </div>
-            </div>
-        </div>
+            </motion.div>
+            )}
+        </AnimatePresence>
     );
 }
+export default Console;

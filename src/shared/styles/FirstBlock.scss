@@ -1,0 +1,15 @@
+.first-block
+{
+    display: flex;
+    background-image: linear-gradient(to top right, #680C40, #CE3F17);
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    .first-text
+    {
+        display: inline-block;
+        flex-direction: column;
+        margin-left: 6.375rem;
+        font-size: 2rem;
+    }
+}

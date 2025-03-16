@@ -28,7 +28,11 @@ const CmdText = () => {
                     />
 
                     </label>
-                    {responses[index] && <p>{responses[index]}</p>}
+                    {responses[index] && 
+                    <p id="resp">
+                        {responses[index]}
+                    </p>}
+
                 </div>
             ))}
         </>

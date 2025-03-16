@@ -1,9 +1,9 @@
-import Console from "../widgets/Console"
+import First from "../widgets/First";
 
 function App() {
   return (
     <div className="app">
-      <Console />
+      <First />
     </div>
   )
 }
